@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoxMedia - Agence Digitale</title>
+    <meta name="description" content="BoxMedia - Agence digitale spécialisée dans le développement web, l'identité de marque, le design UI/UX et le marketing numérique">
+    
+    <style>
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #ffffff;
+            --text-primary: #ffffff;
+            --text-secondary: #000000;
+            --accent: #00ff00;
+            --gray-light: #cccccc;
+            --gray-dark: #333333;
+        }
+
+        .dark {
+            --bg-primary: #ffffff;
+            --bg-secondary: #000000;
+            --text-primary: #000000;
+            --text-secondary: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: auto !important;
+        }
+
+        button, a, input, textarea, select, label {
+            cursor: pointer !important;
+        }
+
+        input[type="text"], input[type="email"], textarea {
+            cursor: text !important;
+        }
+
+        body {
+            font-family: 'Courier New', 'IBM Plex Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scanlines Effect */
+        .scanlines::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 255, 255, 0.03) 2px,
+                rgba(255, 255, 255, 0.03) 4px
+            );
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Pixelated Border */
+        .pixelated-border {
+            border: 2px solid currentColor;
+            box-shadow: 
+                -2px -2px 0px currentColor,
+                2px -2px 0px currentColor,
+                -2px 2px 0px currentColor,
+                2px 2px 0px currentColor;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-primary);
+            border-bottom: 2px solid var(--text-primary);
+            z-index: 50;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--text-primary);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            font-family: inherit;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .typewriter {
+            border-right: 2px solid var(--accent);
+            animation: blink-caret 1s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--accent); }
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--gray-light);
+        }
+
+        .cta-button {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: 2px solid var(--text-primary);
+            padding: 1rem 2rem;
+            font-family: inherit;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+        /* Cards */
+        .card {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 2rem;
+            border: 2px solid var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Images */
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+
+        .portfolio-image:hover {
+            filter: grayscale(0%);
+        }
+
+        /* Progress Bars */
+        .progress-bar {
+            background: var(--gray-dark);
+            height: 20px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            line-height: 20px;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 2rem;
+            border: 2px solid var(--text-secondary);
+            text-align: center;
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--gray-dark);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .testimonial-dot.active {
+            background: var(--accent);
+        }
+
+        /* Contact Form */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: 2px solid var(--text-secondary);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: 2px solid var(--text-primary);
+            font-size: 1.5rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .back-to-top:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 2px solid var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--bg-primary);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 60;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+                z-index: 70;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+
+        .loading-text {
+            font-size: 3rem;
+            color: var(--accent);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .loading.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-text">▓</div>
+    </div>
+
+    <!-- Header -->
+    <header class="header scanlines">
+        <nav class="nav">
+            <div class="logo">
+                <span>[</span><span style="color: var(--accent);">BOX</span><span>MEDIA]</span>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">ACCUEIL</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#skills">COMPÉTENCES</a></li>
+                <li><a href="#team">ÉQUIPE</a></li>
+                <li><a href="#testimonials">TÉMOIGNAGES</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+
+            <button class="theme-toggle" onclick="toggleTheme()">MODE SOMBRE</button>
+            <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero scanlines">
+        <div class="hero-content">
+            <h1>
+                <span class="typewriter" id="typewriter"></span>
+            </h1>
+            <p>DÉPLOYANT L'EXCELLENCE NUMÉRIQUE DEPUIS 2020</p>
+            <button class="cta-button pixelated-border">DÉMARRER VOTRE PROJET</button>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section" style="background: var(--bg-secondary); color: var(--text-secondary);">
+        <div class="container">
+            <h2 class="section-title">[PORTFOLIO.EXE]</h2>
+            <div class="grid grid-2">
+                <div class="card pixelated-border">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Plateforme E-commerce" class="portfolio-image">
+                    <h3>PLATEFORME E-COMMERCE</h3>
+                    <p>SOLUTION DE SHOPPING COMPLÈTE AVEC INTÉGRATION DE PAIEMENT</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">DÉMO</button>
+                        <button class="cta-button pixelated-border">DÉTAILS</button>
+                    </div>
+                </div>
+
+                <div class="card pixelated-border">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Dashboard Crypto" class="portfolio-image">
+                    <h3>TABLEAU DE BORD CRYPTO</h3>
+                    <p>INTERFACE DE TRADING EN TEMPS RÉEL AVEC VISUALISATION DE DONNÉES</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">DÉMO</button>
+                        <button class="cta-button pixelated-border">DÉTAILS</button>
+                    </div>
+                </div>
+
+                <div class="card pixelated-border">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="App Fitness" class="portfolio-image">
+                    <h3>APPLICATION FITNESS MOBILE</h3>
+                    <p>SUIVI DES EXERCICES AVEC RECOMMANDATIONS IA</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">DÉMO</button>
+                        <button class="cta-button pixelated-border">DÉTAILS</button>
+                    </div>
+                </div>
+
+                <div class="card pixelated-border">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Analytics SaaS" class="portfolio-image">
+                    <h3>ANALYTICS SAAS</h3>
+                    <p>PLATEFORME BUSINESS INTELLIGENCE AVEC RAPPORTS PERSONNALISÉS</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">DÉMO</button>
+                        <button class="cta-button pixelated-border">DÉTAILS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">[SERVICES.DLL]</h2>
+            <div class="grid grid-3">
+                <div class="card pixelated-border">
+                    <div class="card-icon"></>
+                    </div>
+                    <h3>DÉVELOPPEMENT WEB</h3>
+                    <p>SOLUTIONS FULL-STACK UTILISANT LES FRAMEWORKS ET TECHNOLOGIES MODERNES</p>
+                </div>
+
+                <div class="card pixelated-border">
+                    <div class="card-icon">🎨</div>
+                    <h3>BRANDING</h3>
+                    <p>DESIGN D'IDENTITÉ DE MARQUE STRATÉGIQUE QUI RÉSONNE AVEC VOTRE AUDIENCE</p>
+                </div>
+
+                <div class="card pixelated-border">
+                    <div class="card-icon">📱</div>
+                    <h3>DESIGN UI/UX</h3>
+                    <p>DESIGN CENTRÉ UTILISATEUR QUI AMÉLIORE LES EXPÉRIENCES NUMÉRIQUES</p>
+                </div>
+
+                <div class="card pixelated-border">
+                    <div class="card-icon">🔍</div>
+                    <h3>OPTIMISATION SEO</h3>
+                    <p>OPTIMISATION POUR MOTEURS DE RECHERCHE POUR BOOSTER VOTRE VISIBILITÉ EN LIGNE</p>
+                </div>
+
+                <div class="card pixelated-border">
+                    <div class="card-icon">📢</div>
+                    <h3>RÉSEAUX SOCIAUX</h3>
+                    <p>STRATÉGIE ET GESTION DES RÉSEAUX SOCIAUX POUR LA CROISSANCE DE MARQUE</p>
+                </div>
+
+                <div class="card pixelated-border">
+                    <div class="card-icon">📊</div>
+                    <h3>MARKETING NUMÉRIQUE</h3>
+                    <p>CAMPAGNES DE MARKETING NUMÉRIQUE COMPLÈTES POUR UN ROI MAXIMUM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section" style="background: var(--bg-secondary); color: var(--text-secondary);">
+        <div class="container">
+            <h2 class="section-title">[COMPÉTENCES.SYS]</h2>
+            <div class="grid grid-2">
+                <div>
+                    <div class="progress-bar pixelated-border">
+                        <div class="progress-fill" data-width="95"></div>
+                        <div class="progress-text">HTML/CSS - 95%</div>
+                    </div>
+
+                    <div class="progress-bar pixelated-border">
+                        <div class="progress-fill" data-width="90"></div>
+                        <div class="progress-text">JAVASCRIPT - 90%</div>
+                    </div>
+
+                    <div class="progress-bar pixelated-border">
+                        <div class="progress-fill" data-width="85"></div>
+                        <div class="progress-text">REACT - 85%</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="progress-bar pixelated-border">
+                        <div class="progress-fill" data-width="80"></div>
+                        <div class="progress-text">NODE.JS - 80%</div>
+                    </div>
+
+                    <div class="progress-bar pixelated-border">
+                        <div class="progress-fill" data-width="92"></div>
+                        <div class="progress-text">FIGMA - 92%</div>
+                    </div>
+
+                    <div class="progress-bar pixelated-border">
+                        <div class="progress-fill" data-width="88"></div>
+                        <div class="progress-text">SEO - 88%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section">
+        <div class="container">
+            <h2 class="section-title">[ÉQUIPE.USR]</h2>
+            <div class="grid grid-3">
+                <div class="card pixelated-border">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" alt="Alex Chen" class="portfolio-image" style="height: 250px;">
+                    <h3>ALEX CHEN</h3>
+                    <p><strong>DÉVELOPPEUR PRINCIPAL</strong></p>
+                    <p>INGÉNIEUR FULL-STACK AVEC 8+ ANNÉES D'EXPÉRIENCE DANS LES APPLICATIONS WEB ÉVOLUTIVES</p>
+                </div>
+
+                <div class="card pixelated-border">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" alt="Sarah Johnson" class="portfolio-image" style="height: 250px;">
+                    <h3>SARAH JOHNSON</h3>
+                    <p><strong>DIRECTRICE CRÉATIVE</strong></p>
+                    <p>VISIONNAIRE DU DESIGN SPÉCIALISÉE DANS L'IDENTITÉ DE MARQUE ET LE DESIGN UX</p>
+                </div>
+
+                <div class="card pixelated-border">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" alt="Mike Rodriguez" class="portfolio-image" style="height: 250px;">
+                    <h3>MIKE RODRIGUEZ</h3>
+                    <p><strong>STRATÈGE MARKETING</strong></p>
+                    <p>EXPERT EN MARKETING NUMÉRIQUE AVEC UN HISTORIQUE PROUVÉ DANS LES STRATÉGIES DE CROISSANCE</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section" style="background: var(--bg-secondary); color: var(--text-secondary);">
+        <div class="container">
+            <h2 class="section-title">[TÉMOIGNAGES.LOG]</h2>
+            
+            <div class="testimonial active">
+                <h3>"BOXMEDIA A TRANSFORMÉ NOTRE PRÉSENCE NUMÉRIQUE. LEUR APPROCHE INSPIRÉE DU TERMINAL EST RÉVOLUTIONNAIRE."</h3>
+                <p><strong>JEAN DUPONT</strong> - PDG, INNOVATIONS TECH INC.</p>
+            </div>
+
+            <div class="testimonial">
+                <h3>"L'ATTENTION AUX DÉTAILS DE L'ÉQUIPE ET LA VISION CRÉATIVE ONT DÉPASSÉ TOUTES NOS ATTENTES."</h3>
+                <p><strong>MARIE MARTIN</strong> - FONDATRICE, SOLUTIONS CRÉATIVES</p>
+            </div>
+
+            <div class="testimonial">
+                <h3>"PROFESSIONNEL, EFFICACE ET INNOVANT. BOXMEDIA LIVRE DES RÉSULTATS QUI COMPTENT."</h3>
+                <p><strong>PIERRE BERNARD</strong> - CTO, SYSTÈMES FUTURS</p>
+            </div>
+
+            <div class="testimonial-nav">
+                <div class="testimonial-dot active" onclick="showTestimonial(0)"></div>
+                <div class="testimonial-dot" onclick="showTestimonial(1)"></div>
+                <div class="testimonial-dot" onclick="showTestimonial(2)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">[CONTACT.CMD]</h2>
+            <div class="grid grid-2">
+                <div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">NOM:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-MAIL:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">MESSAGE:</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="cta-button pixelated-border">ENVOYER LE MESSAGE</button>
+                    </form>
+                </div>
+
+                <div>
+                    <h3>INFORMATIONS DE CONTACT:</h3>
+                    <p><strong>E-MAIL:</strong> hello@boxmedia.com</p>
+                    <p><strong>TÉLÉPHONE:</strong> +33 1 23 45 67 89</p>
+                    <p><strong>TWITTER:</strong> @BoxMediaFR</p>
+                    <p><strong>LINKEDIN:</strong> /company/boxmedia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 BoxMedia. Tous droits réservés.</p>
+            <p>Développé avec ❤️ en France</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Variables
+        let currentTheme = 'dark';
+        let currentTestimonial = 0;
+        const phrases = [
+            'CODE. DESIGN. IMPACT.',
+            'HACKER LE FUTUR.',
+            'VISION PIXEL-PARFAITE.',
+            'DÉBOGUER VOTRE MARQUE.'
+        ];
+        let currentPhrase = 0;
+        let currentChar = 0;
+        let isDeleting = false;
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('fade-out');
+            }, 1500);
+        });
+
+        // Typewriter Effect
+        function typeWriter() {
+            const current = phrases[currentPhrase];
+            const typewriterElement = document.getElementById('typewriter');
+            
+            if (isDeleting) {
+                currentChar--;
+            } else {
+                currentChar++;
+            }
+
+            typewriterElement.textContent = current.substring(0, currentChar);
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && currentChar === current.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && currentChar === 0) {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // Start typewriter when page loads
+        setTimeout(typeWriter, 2000);
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+            
+            if (currentTheme === 'dark') {
+                body.classList.add('dark');
+                button.textContent = 'MODE CLAIR';
+                currentTheme = 'light';
+            } else {
+                body.classList.remove('dark');
+                button.textContent = 'MODE SOMBRE';
+                currentTheme = 'dark';
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const button = document.querySelector('.mobile-menu');
+            
+            navLinks.classList.toggle('show');
+            button.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu after clicking
+                    const navLinks = document.getElementById('navLinks');
+                    const button = document.querySelector('.mobile-menu');
+                    navLinks.classList.remove('show');
+                    button.textContent = '☰';
+                }
+            });
+        });
+
+        // Active Navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > window.innerHeight) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // Progress Bars Animation
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+            });
+        }
+
+        // Intersection Observer for Progress Bars
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateProgressBars();
+                }
+            });
+        });
+
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+
+        // Testimonials
+        function showTestimonial(index) {
+            const testimonials = document.querySelectorAll('.testimonial');
+            const dots = document.querySelectorAll('.testimonial-dot');
+
+            testimonials.forEach(t => t.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+
+            testimonials[index].classList.add('active');
+            dots[index].classList.add('active');
+
+            currentTestimonial = index;
+        }
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % 3;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (!name.trim() || !email.trim() || !message.trim()) {
+                alert('ERREUR: TOUS LES CHAMPS SONT REQUIS');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('ERREUR: FORMAT E-MAIL INVALIDE');
+                return;
+            }
+
+            // Simulate form submission
+            alert('MESSAGE TRANSMIS AVEC SUCCÈS! NOUS VOUS CONTACTERONS BIENTÔT.');
+            this.reset();
+        });
+
+        // Back to Top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
