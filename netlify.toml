@@ -1,6 +1,6 @@
 [build]
   # نقطة الدخول للموقع
-  publish = "."
+  publish = "public"
   
   # لا توجد عملية بناء مطلوبة لأن الموقع HTML خالص
   command = "echo 'No build needed - static HTML site'"
