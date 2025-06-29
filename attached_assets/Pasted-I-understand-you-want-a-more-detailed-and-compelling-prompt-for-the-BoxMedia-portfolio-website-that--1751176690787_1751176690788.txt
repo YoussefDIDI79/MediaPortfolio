@@ -1,0 +1,64 @@
+I understand you want a more detailed and compelling prompt for the BoxMedia portfolio website that captures a bold, unique vision while maintaining the core requirements (HTML, CSS, vanilla JavaScript, black-and-white color scheme, retro-futuristic terminal-inspired aesthetic). Below is a revised, richly detailed prompt designed to inspire a standout website that feels vibrant, immersive, and professional, addressing your feedback that the previous prompt was weak. This new prompt emphasizes creativity, technical precision, and a cohesive narrative to ensure the site is both visually striking and functionally robust.
+
+---
+
+**Prompt:**
+
+Design and develop a portfolio website for **BoxMedia**, a cutting-edge digital agency specializing in web development, branding, UI/UX design, and digital marketing. The website must be built using only **HTML, CSS, and vanilla JavaScript** (no external libraries or frameworks like GSAP, AOS, Swiper, or Typed.js) to ensure a lightweight, dependency-free codebase optimized for performance. The aesthetic should embody a **retro-futuristic, terminal-inspired design** that evokes the raw, nostalgic vibe of 1980s CRT monitors and early hacker interfaces, while feeling modern, bold, and professional. The color scheme is strictly **monochromatic**—using black (#000000) and white (#FFFFFF) as primary colors, with grayscale accents (#333333 for dark elements, #CCCCCC for light highlights) to add depth without breaking the black-and-white palette.
+
+The website must include the following sections, each crafted to align with the retro-futuristic theme while ensuring a seamless user experience:
+1. **Header**: A sticky navigation bar with a pixelated logo (SVG-based, resembling a terminal icon), menu links (Home, Portfolio, Services, Skills, Team, Testimonials, Contact), and a dark mode toggle styled as a retro switch. The navigation should collapse into a hamburger menu on mobile with a terminal-like slide-in animation.
+2. **Hero**: A full-screen section with a dynamic typewriter effect for the headline, cycling through punchy, tech-inspired phrases (e.g., “CODE. DESIGN. IMPACT.”, “HACK THE FUTURE.”, “PIXEL-PERFECT VISION.”). Include a CRT scanline overlay and a pixelated CTA button that pulses subtly to draw attention.
+3. **Portfolio**: A grid of project cards (minimum 4), each with a grayscale image (color on hover), a bold title, a short description, and two buttons (“Demo” and “Details”). Cards should have pixelated borders and a subtle glitch effect on hover, mimicking a terminal flicker.
+4. **Services**: A grid of service cards (minimum 6, e.g., Web Development, Branding, UI/UX, SEO, Social Media, Digital Marketing), each with a FontAwesome icon, title, and description. Cards should feature a retro “digital rain” background effect on hover (CSS-only).
+5. **Skills**: A grid of horizontal progress bars (minimum 6, e.g., HTML, CSS, JavaScript, React, Figma, SEO) showing percentage proficiency. Use a pixelated, terminal-style design with animated fill effects triggered on scroll.
+6. **Team**: A grid of team member cards (minimum 3), each with a grayscale profile image (color on hover), name, role, short bio, and social links (Twitter, LinkedIn). Cards should have a subtle “static noise” hover effect inspired by CRT displays.
+7. **Testimonials**: A carousel of client quotes (minimum 3) with author and company names, styled as terminal windows with pixelated borders. Implement a vanilla JavaScript slider with manual next/prev controls and auto-rotation every 5 seconds.
+8. **Contact**: A form with fields for name, email, and message, styled with monospaced typography and pixelated borders. Include contact info (email, phone, Twitter, LinkedIn) with retro icons. Add a submit button with a loading animation (CSS-only).
+9. **Footer**: A section with social media links, quick navigation links, and a copyright notice, styled with a terminal-like background and monospaced text.
+
+**Design Requirements**:
+- **Aesthetic**: The retro-futuristic, terminal-inspired look should include:
+  - **Typography**: Use monospaced fonts (e.g., “Courier New”, “IBM Plex Mono”, or system monospace fallback) for all text, with bold, uppercase headings for emphasis. Ensure font sizes are legible (e.g., 2.5rem for headings, 1rem for body).
+  - **CRT Effects**: Apply subtle scanline overlays (repeating linear gradients) and occasional glitch animations (CSS keyframes) to evoke a retro monitor feel.
+  - **Pixelated Elements**: Use blocky, pixelated borders (via CSS or SVG) for cards, buttons, and dividers to reinforce the terminal aesthetic.
+- **Color Scheme**: Strictly black (#000000), white (#FFFFFF), with grayscale accents (#333333, #CCCCCC). Ensure high contrast for readability (WCAG 2.1 AA compliance).
+- **Animations**:
+  - Implement CSS-only animations for section reveals (fade-in, slide-up), hover effects (glitch, scale, color shift), and a typewriter effect for the hero text.
+  - Use vanilla JavaScript for dynamic content (populating portfolio, services, skills, team, testimonials) and interactivity (carousel, form validation, scroll-triggered animations).
+  - Add a custom pixelated cursor (16x16px, blocky, black with white border) for desktop, disabled on mobile for usability.
+- **Interactivity**:
+  - Dark mode toggle that switches between black and white backgrounds, with smooth transitions for all elements.
+  - Smooth scrolling for navigation links with offset to account for the sticky header.
+  - Active navigation link highlighting based on scroll position.
+  - Form validation to ensure all fields are filled before submission (alert on error).
+  - Back-to-top button that appears after scrolling past the hero section, styled as a pixelated arrow.
+- **Performance**:
+  - Optimize for fast load times: use inline SVG for the logo and dividers, lazy-load images (loading="lazy"), and minimize JavaScript.
+  - Ensure Core Web Vitals compliance (e.g., LCP < 2.5s, CLS < 0.1).
+- **Responsiveness**:
+  - Fully responsive design with a mobile-first approach. Use CSS Grid and Flexbox for layouts, ensuring cards stack vertically on screens <768px.
+  - Hamburger menu for mobile navigation with a terminal-style slide-in effect.
+- **Accessibility**:
+  - Include ARIA labels for navigation, buttons, and form fields.
+  - Ensure keyboard navigation (e.g., tab focus for links, buttons, and form inputs).
+  - Maintain high contrast ratios (e.g., 4.5:1 for text).
+- **Content**:
+  - Use bold, techy, and concise copy that aligns with the terminal theme (e.g., “Deploying Digital Excellence”, “Debugging Your Brand”).
+  - Include placeholder images (e.g., via.placeholder.com) for portfolio and team, with notes for replacement with optimized WebP images (<100KB).
+- **Unique Features**:
+  - A preloader with a spinning pixelated SVG (e.g., a terminal prompt) that fades out after 1.5 seconds.
+  - Section dividers with pixelated, triangular SVG shapes that invert colors in dark mode.
+  - A subtle “digital noise” background effect in the footer to tie in the retro theme.
+
+**Technical Requirements**:
+- Provide a single `index.html` file with all HTML, CSS (in `<style>`), and JavaScript (in `<script>`) inline, ready for static hosting (e.g., Vercel, GitHub Pages).
+- Use FontAwesome (via `<link>` to a free CDN kit) for icons in services, team, and contact sections, with a note to replace with a custom kit ID.
+- Include comments in the code to explain key sections (e.g., animations, carousel logic, dark mode).
+- Ensure cross-browser compatibility (Chrome, Firefox, Safari, Edge) and test for mobile devices (iOS, Android).
+
+**Goal**: The website should feel like a bold, nostalgic journey into a hacker’s terminal, blending retro charm with modern professionalism. It must stand out as unique compared to typical agency portfolios, captivating clients with its creative aesthetic, smooth interactions, and fast performance, while showcasing BoxMedia’s expertise in a memorable way.
+
+---
+
+This prompt is designed to be vivid, inspiring, and precise, guiding the creation of a website that’s both technically robust and visually distinctive. It avoids external libraries, emphasizes the retro-futuristic theme, and ensures all required features are included with clear implementation details. If you’d like me to generate the full `index.html` based on this prompt or tweak specific aspects (e.g., a different aesthetic, additional features), let me know!
