@@ -98,7 +98,10 @@ This is a full-stack web application featuring a retro-futuristic portfolio webs
 
 ```
 Changelog:
-- June 29, 2025. Initial setup
+- June 29, 2025. Initial setup with React/Express full-stack
+- June 29, 2025. Converted to pure frontend HTML/CSS/JavaScript at user request
+- June 29, 2025. Fixed cursor visibility issues for mobile and desktop
+- June 29, 2025. Created complete portfolio website with Arabic RTL support
 ```
 
 ## User Preferences
