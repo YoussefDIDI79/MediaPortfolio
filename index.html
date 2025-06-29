@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoxMedia - وكالة رقمية</title>
-    <meta name="description" content="BoxMedia - وكالة رقمية متخصصة في تطوير المواقع، الهوية التجارية، تصميم UI/UX، والتسويق الرقمي">
+    <title>BoxMedia - Agence Digitale</title>
+    <meta name="description" content="BoxMedia - Agence digitale spécialisée dans le développement web, l'identité de marque, le design UI/UX et le marketing numérique">
     
     <style>
         :root {
@@ -386,10 +386,25 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--bg-primary);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 60;
+            }
+
+            .nav-links.show {
+                display: flex;
             }
 
             .mobile-menu {
                 display: block;
+                z-index: 70;
             }
 
             .hero-content h1 {
@@ -451,17 +466,17 @@
                 <span>[</span><span style="color: var(--accent);">BOX</span><span>MEDIA]</span>
             </div>
             
-            <ul class="nav-links">
-                <li><a href="#home" class="active">الرئيسية</a></li>
-                <li><a href="#portfolio">الأعمال</a></li>
-                <li><a href="#services">الخدمات</a></li>
-                <li><a href="#skills">المهارات</a></li>
-                <li><a href="#team">الفريق</a></li>
-                <li><a href="#testimonials">آراء العملاء</a></li>
-                <li><a href="#contact">تواصل</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">ACCUEIL</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#skills">COMPÉTENCES</a></li>
+                <li><a href="#team">ÉQUIPE</a></li>
+                <li><a href="#testimonials">TÉMOIGNAGES</a></li>
+                <li><a href="#contact">CONTACT</a></li>
             </ul>
 
-            <button class="theme-toggle" onclick="toggleTheme()">وضع مظلم</button>
+            <button class="theme-toggle" onclick="toggleTheme()">MODE SOMBRE</button>
             <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
         </nav>
     </header>
@@ -472,53 +487,53 @@
             <h1>
                 <span class="typewriter" id="typewriter"></span>
             </h1>
-            <p>نحن نبني التميز الرقمي منذ 2020</p>
-            <button class="cta-button pixelated-border">ابدأ مشروعك</button>
+            <p>DÉPLOYANT L'EXCELLENCE NUMÉRIQUE DEPUIS 2020</p>
+            <button class="cta-button pixelated-border">DÉMARRER VOTRE PROJET</button>
         </div>
     </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="section" style="background: var(--bg-secondary); color: var(--text-secondary);">
         <div class="container">
-            <h2 class="section-title">[الأعمال.EXE]</h2>
+            <h2 class="section-title">[PORTFOLIO.EXE]</h2>
             <div class="grid grid-2">
                 <div class="card pixelated-border">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="متجر إلكتروني" class="portfolio-image">
-                    <h3>منصة تجارة إلكترونية</h3>
-                    <p>حل تسوق متكامل مع نظام دفع متقدم</p>
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Plateforme E-commerce" class="portfolio-image">
+                    <h3>PLATEFORME E-COMMERCE</h3>
+                    <p>SOLUTION DE SHOPPING COMPLÈTE AVEC INTÉGRATION DE PAIEMENT</p>
                     <div style="margin-top: 1rem;">
-                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">عرض</button>
-                        <button class="cta-button pixelated-border">تفاصيل</button>
+                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">DÉMO</button>
+                        <button class="cta-button pixelated-border">DÉTAILS</button>
                     </div>
                 </div>
 
                 <div class="card pixelated-border">
-                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="لوحة تحكم" class="portfolio-image">
-                    <h3>لوحة تحكم العملات الرقمية</h3>
-                    <p>واجهة تداول مع تصور البيانات المباشر</p>
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Dashboard Crypto" class="portfolio-image">
+                    <h3>TABLEAU DE BORD CRYPTO</h3>
+                    <p>INTERFACE DE TRADING EN TEMPS RÉEL AVEC VISUALISATION DE DONNÉES</p>
                     <div style="margin-top: 1rem;">
-                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">عرض</button>
-                        <button class="cta-button pixelated-border">تفاصيل</button>
+                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">DÉMO</button>
+                        <button class="cta-button pixelated-border">DÉTAILS</button>
                     </div>
                 </div>
 
                 <div class="card pixelated-border">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="تطبيق لياقة" class="portfolio-image">
-                    <h3>تطبيق اللياقة البدنية</h3>
-                    <p>تتبع التمارين مع توصيات الذكاء الاصطناعي</p>
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="App Fitness" class="portfolio-image">
+                    <h3>APPLICATION FITNESS MOBILE</h3>
+                    <p>SUIVI DES EXERCICES AVEC RECOMMANDATIONS IA</p>
                     <div style="margin-top: 1rem;">
-                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">عرض</button>
-                        <button class="cta-button pixelated-border">تفاصيل</button>
+                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">DÉMO</button>
+                        <button class="cta-button pixelated-border">DÉTAILS</button>
                     </div>
                 </div>
 
                 <div class="card pixelated-border">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="تحليلات" class="portfolio-image">
-                    <h3>منصة التحليلات</h3>
-                    <p>منصة ذكاء الأعمال مع تقارير مخصصة</p>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Analytics SaaS" class="portfolio-image">
+                    <h3>ANALYTICS SAAS</h3>
+                    <p>PLATEFORME BUSINESS INTELLIGENCE AVEC RAPPORTS PERSONNALISÉS</p>
                     <div style="margin-top: 1rem;">
-                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">عرض</button>
-                        <button class="cta-button pixelated-border">تفاصيل</button>
+                        <button class="cta-button pixelated-border" style="margin-right: 0.5rem;">DÉMO</button>
+                        <button class="cta-button pixelated-border">DÉTAILS</button>
                     </div>
                 </div>
             </div>
@@ -528,42 +543,43 @@
     <!-- Services Section -->
     <section id="services" class="section">
         <div class="container">
-            <h2 class="section-title">[الخدمات.DLL]</h2>
+            <h2 class="section-title">[SERVICES.DLL]</h2>
             <div class="grid grid-3">
                 <div class="card pixelated-border">
-                    <div class="card-icon"></></div>
-                    <h3>تطوير المواقع</h3>
-                    <p>حلول متكاملة باستخدام أحدث التقنيات والأطر</p>
+                    <div class="card-icon"></>
+                    </div>
+                    <h3>DÉVELOPPEMENT WEB</h3>
+                    <p>SOLUTIONS FULL-STACK UTILISANT LES FRAMEWORKS ET TECHNOLOGIES MODERNES</p>
                 </div>
 
                 <div class="card pixelated-border">
                     <div class="card-icon">🎨</div>
-                    <h3>الهوية التجارية</h3>
-                    <p>تصميم هوية العلامة التجارية الاستراتيجية</p>
+                    <h3>BRANDING</h3>
+                    <p>DESIGN D'IDENTITÉ DE MARQUE STRATÉGIQUE QUI RÉSONNE AVEC VOTRE AUDIENCE</p>
                 </div>
 
                 <div class="card pixelated-border">
                     <div class="card-icon">📱</div>
-                    <h3>تصميم UI/UX</h3>
-                    <p>تصميم يركز على المستخدم لتحسين التجربة الرقمية</p>
+                    <h3>DESIGN UI/UX</h3>
+                    <p>DESIGN CENTRÉ UTILISATEUR QUI AMÉLIORE LES EXPÉRIENCES NUMÉRIQUES</p>
                 </div>
 
                 <div class="card pixelated-border">
                     <div class="card-icon">🔍</div>
-                    <h3>تحسين محركات البحث</h3>
-                    <p>تحسين المواقع لزيادة الظهور في نتائج البحث</p>
+                    <h3>OPTIMISATION SEO</h3>
+                    <p>OPTIMISATION POUR MOTEURS DE RECHERCHE POUR BOOSTER VOTRE VISIBILITÉ EN LIGNE</p>
                 </div>
 
                 <div class="card pixelated-border">
                     <div class="card-icon">📢</div>
-                    <h3>وسائل التواصل الاجتماعي</h3>
-                    <p>استراتيجية وإدارة وسائل التواصل لنمو العلامة التجارية</p>
+                    <h3>RÉSEAUX SOCIAUX</h3>
+                    <p>STRATÉGIE ET GESTION DES RÉSEAUX SOCIAUX POUR LA CROISSANCE DE MARQUE</p>
                 </div>
 
                 <div class="card pixelated-border">
                     <div class="card-icon">📊</div>
-                    <h3>التسويق الرقمي</h3>
-                    <p>حملات تسويق رقمي شاملة لأقصى عائد استثمار</p>
+                    <h3>MARKETING NUMÉRIQUE</h3>
+                    <p>CAMPAGNES DE MARKETING NUMÉRIQUE COMPLÈTES POUR UN ROI MAXIMUM</p>
                 </div>
             </div>
         </div>
@@ -572,7 +588,7 @@
     <!-- Skills Section -->
     <section id="skills" class="section" style="background: var(--bg-secondary); color: var(--text-secondary);">
         <div class="container">
-            <h2 class="section-title">[المهارات.SYS]</h2>
+            <h2 class="section-title">[COMPÉTENCES.SYS]</h2>
             <div class="grid grid-2">
                 <div>
                     <div class="progress-bar pixelated-border">
@@ -582,24 +598,24 @@
 
                     <div class="progress-bar pixelated-border">
                         <div class="progress-fill" data-width="90"></div>
-                        <div class="progress-text">JavaScript - 90%</div>
+                        <div class="progress-text">JAVASCRIPT - 90%</div>
                     </div>
 
                     <div class="progress-bar pixelated-border">
                         <div class="progress-fill" data-width="85"></div>
-                        <div class="progress-text">React - 85%</div>
+                        <div class="progress-text">REACT - 85%</div>
                     </div>
                 </div>
 
                 <div>
                     <div class="progress-bar pixelated-border">
                         <div class="progress-fill" data-width="80"></div>
-                        <div class="progress-text">Node.js - 80%</div>
+                        <div class="progress-text">NODE.JS - 80%</div>
                     </div>
 
                     <div class="progress-bar pixelated-border">
                         <div class="progress-fill" data-width="92"></div>
-                        <div class="progress-text">Figma - 92%</div>
+                        <div class="progress-text">FIGMA - 92%</div>
                     </div>
 
                     <div class="progress-bar pixelated-border">
@@ -614,27 +630,27 @@
     <!-- Team Section -->
     <section id="team" class="section">
         <div class="container">
-            <h2 class="section-title">[الفريق.USR]</h2>
+            <h2 class="section-title">[ÉQUIPE.USR]</h2>
             <div class="grid grid-3">
                 <div class="card pixelated-border">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" alt="أليكس تشين" class="portfolio-image" style="height: 250px;">
-                    <h3>أليكس تشين</h3>
-                    <p><strong>المطور الرئيسي</strong></p>
-                    <p>مهندس متكامل مع أكثر من 8 سنوات خبرة في تطبيقات الويب</p>
+                    <img src="images/alex-rodriguez.svg" alt="Alex Rodriguez" class="portfolio-image" style="height: 250px;">
+                    <h3>ALEX RODRIGUEZ</h3>
+                    <p><strong>DÉVELOPPEUR SENIOR</strong></p>
+                    <p>EXPERT EN REACT ET NODE.JS, PASSIONNÉ DE NOUVELLES TECHNOLOGIES ET D'INNOVATION</p>
                 </div>
 
                 <div class="card pixelated-border">
-                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" alt="سارة جونسون" class="portfolio-image" style="height: 250px;">
-                    <h3>سارة جونسون</h3>
-                    <p><strong>المديرة الإبداعية</strong></p>
-                    <p>رؤية تصميمية متخصصة في هوية العلامة التجارية وتجربة المستخدم</p>
+                    <img src="images/sarah-johnson.png" alt="Sarah Johnson" class="portfolio-image" style="height: 250px;">
+                    <h3>SARAH JOHNSON</h3>
+                    <p><strong>DIRECTRICE CRÉATIVE</strong></p>
+                    <p>VISIONNAIRE DU DESIGN SPÉCIALISÉE DANS L'IDENTITÉ DE MARQUE ET LE DESIGN UX</p>
                 </div>
 
                 <div class="card pixelated-border">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" alt="مايك رودريجيز" class="portfolio-image" style="height: 250px;">
-                    <h3>مايك رودريجيز</h3>
-                    <p><strong>استراتيجي التسويق</strong></p>
-                    <p>خبير تسويق رقمي مع سجل حافل في استراتيجيات النمو</p>
+                    <img src="images/maria-garcia.svg" alt="Maria Garcia" class="portfolio-image" style="height: 250px;">
+                    <h3>MARIA GARCIA</h3>
+                    <p><strong>STRATÈGE MARKETING</strong></p>
+                    <p>EXPERTE EN MARKETING DIGITAL ET STRATÉGIES DE CROISSANCE POUR STARTUPS ET PME</p>
                 </div>
             </div>
         </div>
@@ -643,21 +659,21 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="section" style="background: var(--bg-secondary); color: var(--text-secondary);">
         <div class="container">
-            <h2 class="section-title">[آراء_العملاء.LOG]</h2>
+            <h2 class="section-title">[TÉMOIGNAGES.LOG]</h2>
             
             <div class="testimonial active">
-                <h3>"حولت BoxMedia حضورنا الرقمي. أسلوبهم المستوحى من الطرفية ثوري."</h3>
-                <p><strong>جون سميث</strong> - الرئيس التنفيذي، شركة الابتكارات التقنية</p>
+                <h3>"BOXMEDIA A TRANSFORMÉ NOTRE PRÉSENCE NUMÉRIQUE. LEUR APPROCHE INSPIRÉE DU TERMINAL EST RÉVOLUTIONNAIRE."</h3>
+                <p><strong>JEAN DUPONT</strong> - PDG, INNOVATIONS TECH INC.</p>
             </div>
 
             <div class="testimonial">
-                <h3>"اهتمام الفريق بالتفاصيل والرؤية الإبداعية فاق كل توقعاتنا."</h3>
-                <p><strong>إيما واتسون</strong> - المؤسسة، الحلول الإبداعية</p>
+                <h3>"L'ATTENTION AUX DÉTAILS DE L'ÉQUIPE ET LA VISION CRÉATIVE ONT DÉPASSÉ TOUTES NOS ATTENTES."</h3>
+                <p><strong>MARIE MARTIN</strong> - FONDATRICE, SOLUTIONS CRÉATIVES</p>
             </div>
 
             <div class="testimonial">
-                <h3>"مهنية وكفاءة وابتكار. BoxMedia تقدم نتائج مهمة."</h3>
-                <p><strong>ديفيد براون</strong> - المدير التقني، أنظمة المستقبل</p>
+                <h3>"PROFESSIONNEL, EFFICACE ET INNOVANT. BOXMEDIA LIVRE DES RÉSULTATS QUI COMPTENT."</h3>
+                <p><strong>PIERRE BERNARD</strong> - CTO, SYSTÈMES FUTURS</p>
             </div>
 
             <div class="testimonial-nav">
@@ -671,35 +687,35 @@
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title">[تواصل.CMD]</h2>
+            <h2 class="section-title">[CONTACT.CMD]</h2>
             <div class="grid grid-2">
                 <div>
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">الاسم:</label>
+                            <label for="name">NOM:</label>
                             <input type="text" id="name" name="name" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="email">البريد الإلكتروني:</label>
+                            <label for="email">E-MAIL:</label>
                             <input type="email" id="email" name="email" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="message">الرسالة:</label>
+                            <label for="message">MESSAGE:</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
 
-                        <button type="submit" class="cta-button pixelated-border">إرسال الرسالة</button>
+                        <button type="submit" class="cta-button pixelated-border">ENVOYER LE MESSAGE</button>
                     </form>
                 </div>
 
                 <div>
-                    <h3>معلومات التواصل:</h3>
-                    <p><strong>البريد الإلكتروني:</strong> hello@boxmedia.com</p>
-                    <p><strong>الهاتف:</strong> +966 50 123 4567</p>
-                    <p><strong>تويتر:</strong> @BoxMediaSA</p>
-                    <p><strong>لينكد إن:</strong> /company/boxmedia</p>
+                    <h3>INFORMATIONS DE CONTACT:</h3>
+                    <p><strong>E-MAIL:</strong> hello@boxmedia.com</p>
+                    <p><strong>TÉLÉPHONE:</strong> +33 1 23 45 67 89</p>
+                    <p><strong>TWITTER:</strong> @BoxMediaFR</p>
+                    <p><strong>LINKEDIN:</strong> /company/boxmedia</p>
                 </div>
             </div>
         </div>
@@ -708,8 +724,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 BoxMedia. جميع الحقوق محفوظة.</p>
-            <p>تم تطويره بـ ❤️ في المملكة العربية السعودية</p>
+            <p>&copy; 2025 BoxMedia. Tous droits réservés.</p>
+            <p>Développé avec ❤️ en France</p>
         </div>
     </footer>
 
@@ -721,10 +737,10 @@
         let currentTheme = 'dark';
         let currentTestimonial = 0;
         const phrases = [
-            'كود. تصميم. تأثير.',
-            'اختراق المستقبل.',
-            'رؤية مثالية البكسل.',
-            'تصحيح علامتك التجارية.'
+            'CODE. DESIGN. IMPACT.',
+            'HACKER LE FUTUR.',
+            'VISION PIXEL-PARFAITE.',
+            'DÉBOGUER VOTRE MARQUE.'
         ];
         let currentPhrase = 0;
         let currentChar = 0;
@@ -773,13 +789,22 @@
             
             if (currentTheme === 'dark') {
                 body.classList.add('dark');
-                button.textContent = 'وضع فاتح';
+                button.textContent = 'MODE CLAIR';
                 currentTheme = 'light';
             } else {
                 body.classList.remove('dark');
-                button.textContent = 'وضع مظلم';
+                button.textContent = 'MODE SOMBRE';
                 currentTheme = 'dark';
             }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const button = document.querySelector('.mobile-menu');
+            
+            navLinks.classList.toggle('show');
+            button.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
         }
 
         // Smooth Scrolling
@@ -792,6 +817,12 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    
+                    // Close mobile menu after clicking
+                    const navLinks = document.getElementById('navLinks');
+                    const button = document.querySelector('.mobile-menu');
+                    navLinks.classList.remove('show');
+                    button.textContent = '☰';
                 }
             });
         });
@@ -878,18 +909,18 @@
             const message = document.getElementById('message').value;
 
             if (!name.trim() || !email.trim() || !message.trim()) {
-                alert('خطأ: جميع الحقول مطلوبة');
+                alert('ERREUR: TOUS LES CHAMPS SONT REQUIS');
                 return;
             }
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert('خطأ: تنسيق البريد الإلكتروني غير صحيح');
+                alert('ERREUR: FORMAT E-MAIL INVALIDE');
                 return;
             }
 
             // Simulate form submission
-            alert('تم إرسال الرسالة بنجاح! سنتواصل معك قريباً.');
+            alert('MESSAGE TRANSMIS AVEC SUCCÈS! NOUS VOUS CONTACTERONS BIENTÔT.');
             this.reset();
         });
 
@@ -899,12 +930,6 @@
                 top: 0,
                 behavior: 'smooth'
             });
-        }
-
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         }
     </script>
 </body>
