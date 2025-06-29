@@ -53,14 +53,15 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: auto;
+    cursor: auto !important;
   }
 
-  /* Custom cursor for desktop only */
-  @media (min-width: 769px) and (pointer: fine) {
-    * {
-      cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAdgAAAHYBTnsmCAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFYSURBVDiNpZM9SwNBEIafgwQSCxsLwcJCG1sLG0uxsLBQsLGwsLBQsLGwsLBQsLGwsLBQsLGwsLBQsLGwsLBQsLGwsLBQsLGwsLBQsLGwsLBQsLGwsLBQsLGwsLBQsLGwsLBQsLGwsLBQsLGwsLBQsLGwsLBQ"), auto !important;
-    }
+  button, a, input, textarea, select, label {
+    cursor: pointer !important;
+  }
+
+  input[type="text"], input[type="email"], textarea {
+    cursor: text !important;
   }
 
   body {
@@ -278,7 +279,7 @@
   display: none;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor: pointer !important;
   z-index: 1000;
   font-size: 20px;
   box-shadow: 
